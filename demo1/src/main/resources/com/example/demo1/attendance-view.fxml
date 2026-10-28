@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.demo1.AttendanceController"
+            style="-fx-background-color: #f8f9fa; -fx-font-family: 'Segoe UI', Arial, sans-serif;">
+
+    <!-- TOP CENTER HEADER -->
+    <top>
+        <HBox alignment="CENTER"
+              style="-fx-background-color: #ffffff; -fx-border-color: #e9ecef; -fx-border-width: 0 0 2 0;">
+            <padding>
+                <Insets top="6.0" right="10.0" bottom="6.0" left="10.0"/>
+            </padding>
+            <Label fx:id="lblSubjectHeader" text="Comprehensive Design of Data Structure"
+                   style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #1a252f;"/>
+        </HBox>
+    </top>
+
+    <!-- LEFT SIDEBAR PANEL -->
+    <left>
+        <VBox spacing="6.0" prefWidth="240.0"
+              style="-fx-background-color: #ffffff; -fx-border-color: #e9ecef; -fx-border-width: 0 2 0 0;">
+            <padding>
+                <Insets top="8.0" right="8.0" bottom="8.0" left="8.0"/>
+            </padding>
+
+            <Label text="SESSION CONTROLS"
+                   style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #0d6efd;"/>
+
+            <Label text="Subject:"/>
+            <ComboBox fx:id="comboSubject" maxWidth="Infinity"/>
+
+            <TextField fx:id="txtNewSubject" promptText="New subject name..."/>
+            <Button text="Add Subject" maxWidth="Infinity" onAction="#onAddSubject"
+                    style="-fx-background-color: #0d6efd; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;"/>
+
+            <Separator/>
+
+            <Label text="Date:"/>
+            <DatePicker fx:id="datePicker" maxWidth="Infinity"/>
+
+            <Label text="Week:"/>
+            <ComboBox fx:id="comboWeek" maxWidth="Infinity"/>
+
+            <HBox spacing="5.0">
+                <Button text="All Present" maxWidth="Infinity" HBox.hgrow="ALWAYS" onAction="#onAllPresent"
+                        style="-fx-background-color: #198754; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;"/>
+                <Button text="All Absent" maxWidth="Infinity" HBox.hgrow="ALWAYS" onAction="#onAllAbsent"
+                        style="-fx-background-color: #dc3545; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;"/>
+            </HBox>
+
+            <Separator/>
+
+            <Label text="ADD NEW STUDENT"
+                   style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #198754;"/>
+            <TextField fx:id="txtNewStudentId" promptText="Student ID"/>
+            <TextField fx:id="txtNewStudentName" promptText="Student Full Name"/>
+            <Button text="+ Add Student" maxWidth="Infinity" onAction="#onAddStudent"
+                    style="-fx-background-color: #198754; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;"/>
+
+            <Separator/>
+
+            <Button text="Export to CSV" maxWidth="Infinity" onAction="#onExport"
+                    style="-fx-background-color: #6c757d; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;"/>
+        </VBox>
+    </left>
+
+    <!-- CENTER TABLE (FULL HEIGHT AUTO-FIT) -->
+    <center>
+        <VBox>
+            <padding>
+                <Insets top="5.0" right="5.0" bottom="5.0" left="5.0"/>
+            </padding>
+            <TableView fx:id="table" VBox.vgrow="ALWAYS"
+                       style="-fx-background-color: #ffffff; -fx-control-inner-background: #ffffff; -fx-fixed-cell-size: 24px;">
+                <columns>
+                    <TableColumn fx:id="colIndex" text="#" minWidth="30.0" maxWidth="45.0"/>
+                    <TableColumn fx:id="colStudentId" text="Student ID Number" prefWidth="130.0"/>
+                    <TableColumn fx:id="colStudentName" text="Student Name" prefWidth="240.0"/>
+                    <TableColumn fx:id="colStatus" text="Status" prefWidth="90.0"/>
+                    <TableColumn fx:id="colAction" text="1-Tap Switch" prefWidth="120.0"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+</BorderPane>
